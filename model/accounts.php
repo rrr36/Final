@@ -24,5 +24,18 @@
         $fisrtName = $accounts['fname'];
         return $firstName;
     }
+    
+    function getLastName($e, $p) {
+        global $db;
+        $query = 'SELECT * FROM accounts WHERE email = :e AND password = :p';
+        $statement = $db->prepare($query);
+        $statement->bindValue(":e", $e);
+        $statement->bindValue(":p", $p);
+        $statement->execute();
+        $accounts = $statement->fetch();
+        $statement->closeCursor();
+        $lastName = $accounts['lname'];
+        return $lastName;
+    }
 
 ?>
