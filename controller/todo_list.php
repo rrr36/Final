@@ -1,48 +1,35 @@
 <?php include '../view/header.php'; ?>
 <main>
+    <h1><?php echo "$firstName $lastName, This is your To-Do list"?></h1>
     <h1>To do List</h1>
 
-    <aside>
-        <!-- display a list of categories -->
-        <h2>Categories</h2>
-        <nav>
-        <ul>
-        <?php foreach ($categories as $category) : ?>
-            <li>
-            <a href="?category_id=<?php echo $category['categoryID']; ?>">
-                <?php echo $category['categoryName']; ?>
-            </a>
-            </li>
-        <?php endforeach; ?>
-        </ul>
-        </nav>
-    </aside>
-
     <section>
-        <!-- display a table of products -->
-        <h2><?php echo $category_name; ?></h2>
+        <!-- display a table of incomplete tasks -->
+        <h2>Incomplete</h2>
         <table>
             <tr>
-                <th>Code</th>
-                <th>Name</th>
-                <th class="right">Price</th>
+                <th>Date Created</th>
+                <th>Due Date</th>
+                <th>Message</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
                 <th>&nbsp;</th>
             </tr>
-            <?php foreach ($products as $product) : ?>
-            <tr>
-                <td><?php echo $product['productCode']; ?></td>
-                <td><?php echo $product['productName']; ?></td>
-                <td class="right"><?php echo $product['listPrice']; ?></td>
-                <td><form action="." method="post">
-                    <input type="hidden" name="action"
-                           value="delete_product">
-                    <input type="hidden" name="product_id"
-                           value="<?php echo $product['productID']; ?>">
-                    <input type="hidden" name="category_id"
-                           value="<?php echo $product['categoryID']; ?>">
-                    <input type="submit" value="Delete">
-                </form></td>
-            </tr>
+            <?php foreach ($todos as $inctodo){
+            
+                if($inctodo['isdone'] == 1){
+                    continue;
+                }else { ?>
+                      <tr>
+                          <td><?php echo $inctodo['createdate']; ?></td>
+                          <td><?php echo $inctodo['duedate']; ?></td>
+                          <td><?php echo $inctodo['message']; ?></td>
+                          <td><form action="." method="post">
+                                  <input type="hidden" name="action" value="edit_from">
+                                  <input type="hidden" name="todoID" value="<?php echo $inctodo['id']; ?>">
+                                  <input type="submit" value="Edit">
+                          </form></td>
+                      </tr>
             <?php endforeach; ?>
         </table>
         <p class="last_paragraph">
