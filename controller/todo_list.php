@@ -1,7 +1,8 @@
 <?php include '../view/header.php'; ?>
 <main>
     <h1><?php echo "$firstName $lastName, This is your To-Do list"?></h1>
-    <h1>To do List</h1>
+    <p><a href="?action=add_form">Add task</a></p>
+    
 
     <section>
         <!-- display a table of incomplete tasks -->
