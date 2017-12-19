@@ -48,5 +48,15 @@
         $statement->execute();
         $statement->closeCursor();
     }
+    
+    function finish() {
+        global $db;
+        $query = 'UPDATE todos SET isdone = :isd WHERE id = :id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(":id", $id);
+        $statement->bindValue(":isdone", 1);
+        $statement->execute();
+        $statement->closeCursor();
+    }
 
  ?>
