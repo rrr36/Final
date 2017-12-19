@@ -39,6 +39,14 @@
         $statement->execute();
         $statement->closeCursor();
     }
-
+    
+    function delete($id) {
+        global $db;
+        $query = 'DELETE FROM todos WHERE id = :id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+        $statement->closeCursor();
+    }
 
  ?>
