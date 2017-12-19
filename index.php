@@ -3,10 +3,10 @@
     <h1>Menu</h1>
     <ul>
         <li>
-            <a href="model/login.php">Login</a>
+            <a href="controller/login.php">Login</a>
         </li>
         <li>
-            <a href="model/signup.php">Sign Up</a>
+            <a href="controller/signup.php">Sign Up</a>
         </li>
     </ul>
 </main>
