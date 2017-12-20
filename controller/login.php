@@ -1,11 +1,12 @@
 <?php include '../view/header.php'; ?>
 <main>
-        <form action = "index.php" method = "post">
+        <?php session_start(); $_SESSION['login'] = true;?>
+        <form action = "mid.php" method = "post">
         <div id="Email">
-        Email Address&nbsp<input type=text autocomplete=off placeholder = "Email Address" name="Email" required><br>
+        Email Address&nbsp<input type=text autocomplete=off placeholder = "Email Address" name="email" required><br>
         </div>
         <div id="Password">
-        Password&nbsp<input type=text autocomplete=off placeholder = "Password" name="Password" required><br>
+        Password&nbsp<input type=text autocomplete=off placeholder = "Password" name="password" required><br>
         </div>
         <div id="button">
         <input type = submit>

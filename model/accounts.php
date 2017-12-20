@@ -1,7 +1,7 @@
 <?php 
     function getID($e, $p) {
         global $db;
-        $query = 'SELECT * FROM a WHERE email = :email AND password = :p';
+        $query = 'SELECT * FROM accounts WHERE email = :e AND password = :p';
         $statement = $db->prepare($query);
         $statement->bindValue(":e", $e);
         $statement->bindValue(":p", $p);
@@ -21,7 +21,7 @@
         $statement->execute();
         $accounts = $statement->fetch();
         $statement->closeCursor();
-        $fisrtName = $accounts['fname'];
+        $firstName = $accounts['fname'];
         return $firstName;
     }
     
@@ -37,5 +37,20 @@
         $lastName = $accounts['lname'];
         return $lastName;
     }
+    
+   function newUser($email,$fname,$lname,$phone,$birthday,$gender,$password){
+        global $db;
+        $query = 'INSERT INTO accounts (email, fname, lname, phone, birthday, gender, password) VALUES (:e, :fn, :ln, :p, :b, :g, :pwd)';
+        $statement = $db->prepare($query);
+        $statement->bindValue(":e", $email);
+        $statement->bindValue(":fn", $fname);
+        $statement->bindValue(":ln", $lname);
+        $statement->bindValue(":p", $phone);
+        $statement->bindValue(":b", $birthday);
+        $statement->bindValue(":g", $gender);
+        $statement->bindValue(":pwd", $password);
+        $statement->execute();
+        $statement->closeCursor();
+   }
 
 ?>

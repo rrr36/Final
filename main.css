@@ -3,6 +3,57 @@
         font-weight: bold;
         color:#676767;
         }
+        
+        h1{
+        text-align:center;
+        
+        }
+        h2{
+        text-align:center;
+          }
+        h3{
+        text-align:center;
+          }
+        table{
+        text-align:center;
+        }
+        section{
+        float:right;
+        padding-right:45%;
+        }
+        
+        main{
+        
+        height:500px;
+        }
+        #function{
+          display:inline;
+          }
+          
+        #function .edit{
+        padding:0px;
+        float:left;
+        }
+         #function .delete{
+        padding:0px;
+        float:left
+        }
+         #function .finish{
+        padding:0px;
+        float:left
+        }
+        a{
+        text-decoration:none;
+        color:#777;
+        }
+        
+        a:hover{
+        color:#12d2e1;
+        }
+        li{
+        text-align:center;
+        
+        }
         #fname{
         padding-top:5px;
         padding-bottom:5px;
@@ -97,7 +148,7 @@
         text-align:center;
         }
         form{
-        padding-right:30%;
+        padding-right:45%;
         text-align:right;
         }
          

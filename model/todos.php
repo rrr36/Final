@@ -1,11 +1,11 @@
 <?php 
     function get_t($oID) {
         global $db;
-        $query = 'SELECT * FROM todos WHERE ownerid = :oid' ORDER BY 'createddate' DESC;
+        $query = "SELECT * FROM todos WHERE ownerid = :oid ORDER BY createddate DESC";
         $statement = $db->prepare($query);
         $statement->bindValue(":oid", $oID);
         $statement->execute();
-        $todos = $statement->fetch();
+        $todos = $statement->fetchAll();
         $statement->closeCursor();
         return $todos;
     }
@@ -21,7 +21,7 @@
         $statement->bindValue(":cd", $dt);
         $statement->bindValue(":dd", $dd);
         $statement->bindValue(":m", $m);
-        $statement->bindValue(":is", 0);
+        $statement->bindValue(":isd", 0);
         $statement->execute();
         $statement->closeCursor();
     }
@@ -30,12 +30,12 @@
         global $db;
         date_default_timezone_set("America/New_York");
         $dt = date("Y-m-d H:i:sa");
-        $query = 'UPDATE todos SET createddate = :cd, duedate = :dd, message = :m WHERE id = :id';
+        $query = 'UPDATE todos SET createddate = :dt, duedate = :dd, message = :m WHERE id = :id';
         $statement = $db->prepare($query);
         $statement->bindValue(":id", $id);
-        $statement->bindValue(":createddate", $dt);
-        $statement->bindValue(":duedate", $dd);
-        $statement->bindValue(":message", $m);
+        $statement->bindValue(":dt", $dt);
+        $statement->bindValue(":dd", $dd);
+        $statement->bindValue(":m", $m);
         $statement->execute();
         $statement->closeCursor();
     }
@@ -49,12 +49,12 @@
         $statement->closeCursor();
     }
     
-    function finish() {
+    function finish($id) {
         global $db;
         $query = 'UPDATE todos SET isdone = :isd WHERE id = :id';
         $statement = $db->prepare($query);
         $statement->bindValue(":id", $id);
-        $statement->bindValue(":isdone", 1);
+        $statement->bindValue(":isd", 1);
         $statement->execute();
         $statement->closeCursor();
     }
