@@ -1,5 +1,5 @@
 <?php include '../view/header.php'; ?>
-<main>
+<main id="main">
     <h1><?php session_start(); echo "$firstName $lastName, This is your To-Do list"?></h1>
     
     
@@ -12,6 +12,7 @@
                 <th>Date Created</th>
                 <th>Due Date</th>
                 <th>Message</th>
+                <th>Options</th>
                
             </tr>
             <?php $oID; $e;?>
@@ -26,8 +27,7 @@
                       $id = $inctodo['id']; 
                       $oID = $inctodo['ownerid'];  
                       $e = $inctodo['owneremail']; 
-                      echo $oID;    
-                      echo $e;   
+              
                 ?>
                       <tr>
                           <td><?php echo $inctodo['createddate']; ?></td>
